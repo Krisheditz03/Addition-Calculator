@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Addition Calculator</h1><br>
+<div class="container">
+  <form id="form">
+    <div class="row">
+      <label for="amountOne" class="label">Amount One</label>
+      <input id="amountOne" class="textfield" type="number" placeholder="₹" />
+    </div><br>
+    <div class="row">
+      <label for="amountTwo" class="label">Amount Two</label>
+      <input id="amountTwo" class="textfield" type="number" placeholder="₹">
+    </div> <br><br>
+    <button id="submit" class="button" type="submit">Calculate</button>
+  </form>
+</div>
+<h2 class="result-value">₹<span id="result">0</span></h2>
+<!-- /.container -->
+
+<script>
+    const form = document.querySelector("#form");
+let amountOne = document.querySelector("#amountOne");
+let amountTwo = document.querySelector("#amountTwo");
+
+// Adds two values from input
+const addValues = function addValues(a, b) {
+  return a + b;
+};
+
+// Output the result upon calculation
+const formSubmitted = () => {
+  event.preventDefault();
+  
+  let newValueOne = Number(amountOne.value);
+  let newValueTwo = Number(amountTwo.value);
+  let theResult = addValues(newValueOne, newValueTwo);
+  
+  // Clear inputs
+  amountOne.value = "";
+  amountTwo.value = "";
+  
+  //Display result
+  return document.querySelector("#result").innerHTML = (theResult).toLocaleString();
+    
+};
+
+// Do this upon form submission
+form.addEventListener("submit", formSubmitted, false);
+
+</script>
+</body>
+</html>
